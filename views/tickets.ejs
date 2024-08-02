@@ -1,0 +1,28 @@
+<%- include('partials/header') %>
+
+<div class="container my-5">
+    <h2 class="text-center">Tickets</h2>
+    <div class="row">
+        <% tickets.forEach(ticket => { %>
+            <div class="col-md-6">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title"><%= ticket.subject %></h5>
+                        <p class="card-text"><%= ticket.description %></p>
+                        <p><strong>Department:</strong> <%= ticket.department %></p>
+                        <p><strong>Priority:</strong> <%= ticket.priority %></p>
+                        <p><strong>Status:</strong> <%= ticket.status %></p>
+                        <small><strong>Created At:</strong> <%= ticket.createdAt.toDateString() %></small>
+                        <small><strong>Updated At:</strong> <%= ticket.updatedAt.toDateString() %></small>
+                        <h6>Comments:</h6>
+                        <% ticket.comments.forEach(comment => { %>
+                            <p><strong>Comment:</strong> <%= comment.body %> - <%= comment.date.toDateString() %></p>
+                        <% }) %>
+                    </div>
+                </div>
+            </div>
+        <% }) %>
+    </div>
+</div>
+
+<%- include('partials/footer') %>

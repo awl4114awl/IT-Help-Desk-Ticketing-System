@@ -1,0 +1,42 @@
+<%- include('partials/header') %>
+
+<div class="container my-5">
+    <h2 class="text-center">Admin Panel</h2>
+    <div class="row">
+        <% tickets.forEach(ticket => { %>
+            <div class="col-md-6">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title"><%= ticket.subject %></h5>
+                        <p><strong>Department:</strong> <%= ticket.department %></p>
+                        <p><strong>Priority:</strong> <%= ticket.priority %></p>
+                        <p><strong>Status:</strong> <%= ticket.status %></p>
+                        <form action="/admin/edit-ticket/<%= ticket._id %>" method="POST" class="mb-3">
+                            <div class="form-group">
+                                <label for="status">Update Status:</label>
+                                <select id="status" name="status" class="form-control">
+                                    <option value="Open" <%= ticket.status === 'Open' ? 'selected' : '' %>>Open</option>
+                                    <option value="In Progress" <%= ticket.status === 'In Progress' ? 'selected' : '' %>>In Progress</option>
+                                    <option value="Closed" <%= ticket.status === 'Closed' ? 'selected' : '' %>>Closed</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-success btn-block">Update</button>
+                        </form>
+                        <form action="/admin/delete-ticket/<%= ticket._id %>" method="POST" class="mb-3">
+                            <button type="submit" class="btn btn-danger btn-block">Delete</button>
+                        </form>
+                        <form action="/admin/add-comment/<%= ticket._id %>" method="POST">
+                            <div class="form-group">
+                                <label for="comment">Add Comment:</label>
+                                <textarea id="comment" name="comment" class="form-control"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-info btn-block">Add Comment</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        <% }) %>
+    </div>
+</div>
+
+<%- include('partials/footer') %>
