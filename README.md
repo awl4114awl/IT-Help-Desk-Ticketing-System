@@ -63,4 +63,4 @@ Contributions are welcome! Please fork this repository, make your changes, and s
 
 ## License
 
-This project is licensed under the MIT License. See the LICENSE file for more details.
+This project is licensed under the MIT License. See the [LICENSE](https://github.com/awl4114awl/IT-Help-Desk-Ticketing-System/blob/main/LICENSE) file for more details.
